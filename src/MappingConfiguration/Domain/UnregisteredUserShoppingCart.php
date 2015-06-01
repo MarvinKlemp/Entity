@@ -2,6 +2,8 @@
 
 namespace MarvinKlemp\Entity\MappingConfiguration\Domain;
 
+use MarvinKlemp\Entity\MappingConfiguration\Domain\Exception\ShoppingCartException;
+
 class UnregisteredUserShoppingCart implements ShoppingCartInterface
 {
     /**
@@ -18,10 +20,15 @@ class UnregisteredUserShoppingCart implements ShoppingCartInterface
     }
 
     /**
-     * @param Product $product
+     * @param  Product $product
+     * @throws Exception\ShoppingCartException
      */
     public function add(Product $product)
     {
+        if (count($this->products) >= 3) {
+            throw new ShoppingCartException("not allowed to buy more than three products if you are not logged in");
+        }
+
         $this->products[] = $product;
     }
 

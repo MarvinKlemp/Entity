@@ -5,7 +5,8 @@ namespace MarvinKlemp\Entity\EntityInterface\Domain;
 interface ShoppingCartInterface
 {
     /**
-     * @param ProductInterface $product
+     * @param  ProductInterface $product
+     * @throws Exception\ShoppingCartException
      */
     public function add(ProductInterface $product);
 
