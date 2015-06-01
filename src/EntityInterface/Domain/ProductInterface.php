@@ -2,6 +2,7 @@
 
 namespace MarvinKlemp\Entity\EntityInterface\Domain;
 
-class ProductInterface
+interface ProductInterface
 {
+    public function price();
 }
